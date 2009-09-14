@@ -9,12 +9,17 @@ p { line-height: 1.5; }
 
 #container { 
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 10px 100px;
   width: 650px;
   font-size: 1.2em;
 }
 
 form { 
+  padding: 8px;
+  background: #ececec;
+  border: 1px solid #bbb;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
 }
 
 fieldset {
@@ -27,8 +32,30 @@ legend {
   font-weight: 700;
 }
 
+legend a {
+  display: block;
+  padding: .5em 280px;
+  color: #888;
+  text-decoration: none;
+}
+legend a:hover { color: #333; }
+
 form label {
   display: block;
   float: left;
   width: 30%;
+}
+
+form input[type="text"],
+form textarea {
+  width: 60%;
+}
+
+form textarea {
+  height: 5em;
+}
+
+form input[type="submit"] {
+  margin-left: 30%;
+  cursor: pointer;
 }
