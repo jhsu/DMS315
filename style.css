@@ -1,0 +1,34 @@
+html { margin:0; padding:0;}
+body {
+  margin: 0;
+  padding: 0;
+  font: 62.5%/1 Verdana, "Helvetica Neue", sans-serif;
+}
+
+p { line-height: 1.5; }
+
+#container { 
+  margin: 0 auto;
+  padding: 0 10px;
+  width: 650px;
+  font-size: 1.2em;
+}
+
+form { 
+}
+
+fieldset {
+  margin: 0; padding: 0;
+  border: 0;
+}
+
+legend {
+  margin:0; padding:0;
+  font-weight: 700;
+}
+
+form label {
+  display: block;
+  float: left;
+  width: 30%;
+}
