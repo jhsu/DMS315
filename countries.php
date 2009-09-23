@@ -1,9 +1,6 @@
 <?php 
 include('ar.php');
-$models = glob('models/*.php');
-foreach( $models as $file) {
-	include($file);
-}
+include('models/country.php');
 
 if ($_GET['code']) {
   $code = $_GET['code'];
