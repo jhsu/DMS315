@@ -8,3 +8,7 @@
 </head>
 <body>
 <div id="container">
+<div id="header">
+  <h1>Joseph Hsu</h1>
+  <p>DMS315 Web Programming at SUNY UB</p>
+</div>

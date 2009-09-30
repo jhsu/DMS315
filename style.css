@@ -3,18 +3,28 @@ body {
   margin: 0;
   padding: 0;
   font: 62.5%/1 Verdana, "Helvetica Neue", sans-serif;
+  background-color: #ddd;
 }
 
 p { line-height: 1.5; }
 
+ol {
+  margin: 0;
+  padding: 0;
+}
+
 #container { 
   margin: 0 auto;
-  padding: 0 10px 100px;
+  padding: 10px 10px 100px 10px;
   width: 650px;
   font-size: 1.2em;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-width: 0 1px;
 }
 
 form { 
+  margin: 1em 0;
   padding: 8px;
   background: #ececec;
   border: 1px solid #bbb;
@@ -47,6 +57,7 @@ form label {
 }
 
 form input[type="text"],
+form input[type="password"],
 form textarea {
   width: 60%;
 }
@@ -55,7 +66,45 @@ form textarea {
   height: 5em;
 }
 
-form input[type="submit"] {
+form button {
   margin-left: 30%;
   cursor: pointer;
+}
+
+dl { width:100%; overflow: hidden; }
+dt, dd { margin: .5em 0; padding: 0; float: left;  }
+dt { clear: left; width: 30%;  }
+dd { width: 70%; } form input[type="submit"] {
+  margin-left: 30%;
+  cursor: pointer;
+}
+
+/* NIXON ENEMIES */
+
+.ranking {
+  overflow: auto;
+  list-style: none;
+  border: 1px solid #ddd;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+
+.ranking li {
+  padding: .5em;
+  overflow: visible;
+}
+
+.ranking li:nth-child(even) {
+  background: #eee;
+}
+
+.ranking li:hover {
+  background: #FFFFAA;
+}
+
+.ranking li h3 {
+}
+
+.ranking li h3 span {
+  margin-right: .75em;
 }
