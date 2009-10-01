@@ -12,7 +12,12 @@ class Enemy extends AR {
 	}
 
 	public function all() {
-		$result = mysql_query("select * from enemies order by rank ASC");
+		if($_GET['sort']) {
+			$sort = $_GET['sort'];
+		} else {
+			$sort = "rank";
+		}
+		$result = mysql_query("select * from enemies order by $sort ASC");
 		$results = array();
 		while($row = mysql_fetch_assoc($result)) {
 			$_this = new Enemy();
@@ -35,13 +40,31 @@ class Enemy extends AR {
 
 	public function create($attr) {
 		if (is_array($attr)) {
-			$result = mysql_query(sprintf("insert into enemies (rank, name, description) values(rank+1, '%s', '%s')", $attr['name'], $attr['description']));
+			$rank = mysql_fetch_array(mysql_query('select max(rank) from enemies'));
+			$rank = $rank['max(rank)'] + 1;
+			$result = mysql_query(sprintf("insert into enemies (rank, name, organization, description) values(%s, '%s', '%s', '%s')", $rank, $attr['name'], $attr['organization'], $attr['description']));
 			unset($_this->self);
 			foreach($attr as $attribute => $value) {
 				$_this->$attribute = $value;
 			}
 		}
 		return $_this;
+	}
+
+	public function update($attrs) {
+		$enemy = Enemy::find($attr[id]);
+		$fields = array();
+		foreach($attrs as $attr => $value) {
+			if ($attr !== "id") {
+				$fields[] = "$attr='$value'";
+			}
+		}
+		$fields = implode(', ', $fields);
+		mysql_query("update enemies set $fields where id=".$enemy->id);
+	}
+
+	public function position($pos) {
+		$enemies = Enemy::all();
 	}
 }
 
@@ -61,13 +84,19 @@ $enemies = Enemy::all();
 
 <?php include('../views/_header.php'); ?>
 
-<h2>Nixon's Enemies</h2>
+<h2>Nixon's Enemies (<?php echo(count($enemies)) ?>)</h2>
+<div>
+	<a href="./?sort=rank" title="sort by rank">Rank</a>
+	<a href="./?sort=name" title="sort by name">Name</a>
+	<a href="./?sort=organization" title="sort by organization">Organization</a>
+</div>
 <ol class="ranking">
 <?php foreach($enemies as $enemy) { ?>
   <li>
-	<h3><span><?php echo $enemy->rank ?></span>
-	<?php print($enemy->name) ?></h3>
-	<p><?php echo $enemy->description ?></p>
+	<h3><span><?php echo($enemy->rank) ?></span>
+	<?php echo($enemy->name) ?></h3>
+	<p><?php echo($enemy->organization) ?></p>
+	<p><?php echo($enemy->description) ?></p>
   </li>
 <?php } ?>
 </ol>
@@ -79,10 +108,14 @@ $enemies = Enemy::all();
 		<input type="text" name="name" />
 	</p>
 	<p>
-	<label for="description">Description</label>
-	<textarea name="description"></textarea>
+		<label for="organization">Organization</label>
+		<input type="text" name="organization" />
 	</p>
-	<button type="submit">Add</button>
+	<p>
+		<label for="description">Description</label>
+		<textarea name="description"></textarea>
+	</p>
+	<input type="submit" value="Add" />
   </fieldset>
 </form>
 

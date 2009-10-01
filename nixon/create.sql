@@ -4,6 +4,7 @@ CREATE TABLE enemies (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(100),
 	description VARCHAR(255),
+	organization VARCHAR(255),
 	rank INT UNIQUE NOT NULL,
 	PRIMARY KEY(id)
 );
