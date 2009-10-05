@@ -3,6 +3,7 @@
 class Country extends AR {
 	const table_name = 'Country';
 	const primary_key = 'code';
+	var $languages = array();
 
 	public function __construct(/* array */) {
 	}
@@ -33,13 +34,14 @@ class Country extends AR {
 	}
 
 	public function find_by_code($code) {
-		$result = mysql_query("select * from ". self::table_name ." where code='$code' limit 1");
+		$result = mysql_query("select Country.*,CountryLanguage.Language from ". self::table_name ." left outer join CountryLanguage on Country.code = CountryLanguage.CountryCode where Country.code='$code' limit 1");
 		$row = mysql_fetch_assoc($result);
 		foreach($row as $index => $value) {
 			$attr = strtolower($index);
 			$this->$attr = $value;
+			// $this->languages[] = ;
 		}
-		return $this;
+		return $row;
 	}
 
 

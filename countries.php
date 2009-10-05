@@ -1,6 +1,7 @@
 <?php 
+include('config/database.php');
 include('ar.php');
-include('models/country.php');
+include('models/country_model.php');
 
 if ($_GET['code']) {
   $code = $_GET['code'];
@@ -22,6 +23,9 @@ if (isset($country)) {?>
   <dd><?php echo $value ?></dd>
 <? } ?>
 </dl>
+<textarea rows="30" cols="80">
+<?php print_r($country); ?>
+</textarea>
 <?php
 } else { ?>
 <h2>Countries</h2>
