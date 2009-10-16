@@ -3,14 +3,24 @@ body {
   margin: 0;
   padding: 0;
   font: 62.5%/1 Verdana, "Helvetica Neue", sans-serif;
-  background-color: #ddd;
+  background: url('/imgbay/images/bg.jpg') 50% top no-repeat;
+  background-attachment: fixed;
 }
 
 p { line-height: 1.5; }
 
+a {
+  color: #60B99A;
+  text-decoration: none;
+}
+
 ol {
   margin: 0;
   padding: 0;
+}
+
+#header h1 {
+  color: #F77825;
 }
 
 #container { 
@@ -19,8 +29,62 @@ ol {
   width: 650px;
   font-size: 1.2em;
   background: #fff;
+  border: 1px solid #60B99A;
+  border-width: 0 16px 0 4px;
+}
+
+#navi {
+  list-style: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+#navi li {
+  float: left;
+  margin-left: 5px;
+}
+
+#navi li:first-child {
+ margin-left: 0;
+}
+
+#navi li a {
+  display: block;
+  padding: .5em 1em;
+  text-decoration: none;
   border: 1px solid #ccc;
-  border-width: 0 1px;
+  border-width: 1px 1px 0 1px;
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  background: #ddd;
+  color: #653751;
+}
+
+#navi li a:hover {
+  background: #fff;
+  color: #EB493E;
+}
+
+#navi li a.active {
+  background: #fff;
+}
+
+#footer {
+  width: 650px;
+  margin: 40px auto;
+}
+
+#footer a {
+  color: #fff;
+}
+
+/***********************/
+
+#login {
+  clear: both;
+  overflow: hidden;
 }
 
 form { 
@@ -32,14 +96,25 @@ form {
   -webkit-border-radius: 6px;
 }
 
+form.login, form.register {
+  width: 40%;
+  margin-right: 5%;
+  float: left;
+}
+
 fieldset {
   margin: 0; padding: 0;
   border: 0;
 }
 
 legend {
-  margin:0; padding:0;
+  margin:0 auto;
+  padding: .3em 2em;
   font-weight: 700;
+  border: 1px solid #fff;
+  background: #F1D16A;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
 }
 
 legend a {
@@ -53,28 +128,43 @@ legend a:hover { color: #333; }
 form label {
   display: block;
   float: left;
-  width: 30%;
+  margin: .3em 0 .2em;
+  line-height: 1.5;
+  cursor: pointer;
 }
 
 form input[type="text"],
 form input[type="password"],
 form textarea {
-  width: 60%;
+  width: 100%;
 }
 
 form textarea {
   height: 5em;
 }
 
-form button {
-  margin-left: 30%;
+button {
   cursor: pointer;
 }
 
-dl { width:100%; overflow: hidden; }
-dt, dd { margin: .5em 0; padding: 0; float: left;  }
-dt { clear: left; width: 30%;  }
-dd { width: 70%; } form input[type="submit"] {
+form .buttons {
+  padding-left: 30%;
+}
+
+form dl { width:100%; overflow: hidden; }
+form dt, form dd { margin: .5em 0; padding: 0; float: left;  }
+form dt { clear: left; width: 30%;  }
+form dd {
+  text-align: right;
+}
+
+form.register dt { width: 100%; }
+form.register dd { float: none; width: 90%; }
+form.register .buttons {
+  padding-left: 0;
+}
+
+form input[type="submit"] {
   margin-left: 30%;
   cursor: pointer;
 }
