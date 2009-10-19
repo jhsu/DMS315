@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>PHP for DMS</title>
-  <link type="text/css" rel="stylesheet" href="../style.css" media="screen" />
-  <script type="text/javascript" src="../jquery.min.js"></script>
-</head>
-<body>
-
+<?php include('../views/_header.php'); ?>
 <?php 
 
 $nouns = array("Barack Obama", "Sarah Palin", "Stephen Colbert", "Chris Brown", "Kanye West");
@@ -57,8 +48,6 @@ if ($_POST) {
 }
 ?>
 
-<div id="container">
-<h1><?php echo "Joseph Hsu" ?></h1>
 
 
 <h2>Forms</h2>

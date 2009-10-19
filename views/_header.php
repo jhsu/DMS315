@@ -9,6 +9,6 @@
 <body>
 <div id="container">
 <div id="header">
-  <h1>Joseph Hsu</h1>
+  <h1><a href="/">Joseph Hsu</a></h1>
   <p>DMS315 Web Programming at SUNY UB</p>
 </div>
