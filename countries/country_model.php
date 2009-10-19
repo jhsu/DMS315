@@ -1,6 +1,6 @@
 <?php
 
-class Country extends AR {
+class Country {
 	const table_name = 'Country';
 	const primary_key = 'code';
 	var $languages = array();

@@ -1,7 +1,7 @@
 <?php 
-include('config/database.php');
-include('ar.php');
-include('models/country_model.php');
+
+include('database.php');
+include('country_model.php');
 
 if ($_GET['code']) {
   $code = $_GET['code'];
@@ -13,7 +13,7 @@ if ($_GET['code']) {
 }
 ?>
 
-<?php include('views/_header.php'); ?>
+<?php include('../views/_header.php'); ?>
 <?php
 if (isset($country)) {?>
 <h2><? echo $country->name ?></h2>
@@ -23,9 +23,6 @@ if (isset($country)) {?>
   <dd><?php echo $value ?></dd>
 <? } ?>
 </dl>
-<textarea rows="30" cols="80">
-<?php print_r($country); ?>
-</textarea>
 <?php
 } else { ?>
 <h2>Countries</h2>
@@ -49,4 +46,4 @@ if (isset($country)) {?>
 </table>
 <? } ?>
 
-<?php include('views/_footer.php'); ?>
+<?php include('../views/_footer.php'); ?>
