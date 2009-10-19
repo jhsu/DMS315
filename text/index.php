@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>PHP for DMS</title>
-  <link type="text/css" rel="stylesheet" href="style.css" media="screen" />
-  <script type="text/javascript" src="processing.min.js"></script>
-  <script type="text/javascript" src="jquery.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="../style.css" media="screen" />
+  <script type="text/javascript" src="../jquery.min.js"></script>
 </head>
 <body>
 
