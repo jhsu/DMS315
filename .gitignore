@@ -1,2 +1,3 @@
 config/database.php
 countries/database.php
+*.swp

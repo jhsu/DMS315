@@ -24,6 +24,15 @@ function online() {
   }
 }
 
+function must_be_authorized() {
+  global $base_url;
+  if (!online()) {
+	header("Location: $base_url", true, 302);
+	print("Location: $base_url");
+	return false;
+  }
+}
+
 function logout() {
   $_SESSION['user_id'] = NULL;
 }

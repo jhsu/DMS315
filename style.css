@@ -3,8 +3,6 @@ body {
   margin: 0;
   padding: 0;
   font: 62.5%/1 Verdana, "Helvetica Neue", sans-serif;
-  background: url('/imgbay/images/bg.jpg') 50% top no-repeat;
-  background-attachment: fixed;
 }
 
 p { line-height: 1.5; }
@@ -28,7 +26,6 @@ ol {
   padding: 10px 10px 100px 10px;
   width: 650px;
   font-size: 1.2em;
-  background: #fff;
 }
 
 #navi {
@@ -36,32 +33,24 @@ ol {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid #ddd;
+  background:#ddd;
 }
 
 #navi li {
   float: left;
-  margin-left: 5px;
-}
-
-#navi li:first-child {
- margin-left: 0;
 }
 
 #navi li a {
   display: block;
   padding: .5em 1em;
   text-decoration: none;
-  border: 1px solid #ccc;
-  border-width: 1px 1px 0 1px;
-  -moz-border-radius: 4px 4px 0 0;
-  -webkit-border-radius: 4px 4px 0 0;
+  border-right: 1px solid #fff;
   background: #ddd;
   color: #653751;
 }
 
 #navi li a:hover {
-  background: #fff;
+  background: #ececec;
   color: #EB493E;
 }
 

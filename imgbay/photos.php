@@ -8,18 +8,23 @@
 
 require('../config/database.php');
 require('user.php');
+require('photo.php');
 
 // start session
 session_start();
 require('helpers.php'); // some helpers require sessions
 
+// must be authorized to view this page
+must_be_authorized();
+
 // upload file
-if ($_FILE) {
-  $photo = new Photo($_FILES['photo']);
-  // move_uploaded_file($photo->tmp_name, $photo_dir."/".$photo->name);
-  move_uploaded_file($_FILES["photo"]["tmp_name"], "photos/".$_FILES["photo"]["name"]);
-  unset($photo->tmp_name);
+if ($_FILES) {
+  $params = array_merge($_FILES['photo'], $_POST['photo']);
+  $photo = new Photo($params);
+  $photo->save();
 }
+
+$photos = Photo::all();
 
 ?>
 
@@ -27,9 +32,9 @@ if ($_FILE) {
 
 <?php include('views/_navi.php');?>
 
-
 <form action="<?= $base_url ?>/photos.php" method="post" enctype="multipart/form-data">
 <fieldset>
+  <input type="hidden" name="photo[user_id]" value="<?= current_user()->id; ?>" />
   <label for="upload[file]">File</label>
   <input type="file" id="upload[file]" name="photo" />
 </fieldset>
@@ -38,6 +43,13 @@ if ($_FILE) {
 </div>
 </form>
 
+<?php foreach($photos as $photo) { ?>
+<img src="/imgbay/<?= $photo->src ?>" />
+<?php } ?>
+
+<pre>
+<?php print_r($photos) ?>
+</pre>
 
 <?php include('views/_debug.php');?>
 
