@@ -8,6 +8,7 @@
 
 require('../config/database.php');
 require('user.php');
+require('photo.php');
 
 // start session
 session_start();
@@ -22,13 +23,14 @@ if (online() && !$_GET['action'] !== 'logout' && !$_POST) {
 }
 
 // post, register user
-if ($_POST['action'] == 'register') {
-  $user = User::create($_POST);
+if ($_POST['register']) {
+  $user = User::create($_POST['register']);
 }
 
 // login
-if ($_POST['action'] == 'login') {
-  $user = User::authenticate($_POST['username'], $_POST['password']); 
+if ($_POST['login']) {
+  $creds = $_POST['login'];
+  $user = User::authenticate($creds['username'], $creds['password']); 
 }
 
 // logout
@@ -38,22 +40,12 @@ if ($_GET['action'] == 'logout') {
   die();
 }
 
-// logout
 
-// login
-
-/*
-if ($_POST) { // if logged in
-  $user = User::authenticate($_POST['username'], $_POST['password']); 
-} else { // GET request
-  if (online()) {
-	$user = User::find($_SESSION['user_id']); 
-	if ($_GET['action'] == 'logout') {
-		$_SESSION['user_id'] = NULL;
-	}
-  }
+// view user
+if ($_GET['user']) {
+  $photos = Photo::find_by_username($_GET['user']);
 }
- */
+
 
 ?>
 
@@ -69,6 +61,14 @@ if ($_POST) { // if logged in
 <?php } ?>
 </div>
 
+<?php if ($photos) { ?>
+<h2><?= $_GET['user'] ?>'s photos</h2>
+<ul class="photos">
+<?php foreach($photos as $photo) { ?>
+<li><a href="/imgbay/photos/<?= $photo['filename'] ?>"><img src="/imgbay/photos/<?= $photo['thumbnail'] ?>" /></a></li>
+<?php } ?>
+<ul>
+<?php } ?>
 <?php// include('views/_debug.php'); ?>
 
 <?php include('views/_footer.php');?>

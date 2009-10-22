@@ -17,14 +17,11 @@ require('helpers.php'); // some helpers require sessions
 // must be authorized to view this page
 must_be_authorized();
 
-// upload file
-if ($_FILES) {
-  $params = array_merge($_FILES['photo'], $_POST['photo']);
-  $photo = new Photo($params);
-  $photo->save();
+if ($_POST['delete']) {
+  Photo::delete_all();
 }
 
-$photos = Photo::all();
+$photos = current_user()->photos();
 
 ?>
 
@@ -32,25 +29,27 @@ $photos = Photo::all();
 
 <?php include('views/_navi.php');?>
 
-<form action="<?= $base_url ?>/photos.php" method="post" enctype="multipart/form-data">
+<form action="<?= $base_url ?>/upload.php" method="post" enctype="multipart/form-data">
 <fieldset>
-  <input type="hidden" name="photo[user_id]" value="<?= current_user()->id; ?>" />
   <label for="upload[file]">File</label>
   <input type="file" id="upload[file]" name="photo" />
-</fieldset>
-<div class="buttons">
   <button type="submit">upload</button>
-</div>
+</fieldset>
 </form>
 
+
+<ul class="photos">
 <?php foreach($photos as $photo) { ?>
-<img src="/imgbay/<?= $photo->src ?>" />
+<li>
+<a href="/imgbay/photos/<?= $photo->filename ?>">
+<img src="/imgbay/photos/<?= $photo->thumbnail ?>" />
+</a>
+</li>
 <?php } ?>
+</ul>
 
-<pre>
-<?php print_r($photos) ?>
-</pre>
-
-<?php include('views/_debug.php');?>
+<form action="" method="post" onsubmit="if(confirm('delete all your photos?')) { } else { return false; }">
+<input type="submit" name="delete" value="Delete All" />
+</form>
 
 <?php include('views/_footer.php');?>
