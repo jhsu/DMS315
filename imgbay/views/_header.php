@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>DMS315 | Joseph Hsu</title>
-  <link type="text/css" rel="stylesheet" href="/style.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="/imgbay/style.css" media="screen" />
   <script type="text/javascript" src="/jquery.min.js"></script>
 </head>
 <body>

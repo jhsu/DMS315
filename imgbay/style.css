@@ -1,6 +1,6 @@
 html { margin:0; padding:0;}
 body {
-  sjflk;sdjlf;margin: 0;
+  margin: 0;
   padding: 0;
   font: 62.5%/1 Verdana, "Helvetica Neue", sans-serif;
 }
@@ -63,10 +63,6 @@ ol {
   margin: 40px auto;
 }
 
-#footer a {
-  color: #fff;
-}
-
 /***********************/
 
 #login {
@@ -77,10 +73,6 @@ ol {
 form { 
   margin: 1em 0;
   padding: 8px;
-  background: #ececec;
-  border: 1px solid #bbb;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
 }
 
 form.login, form.register {
@@ -98,10 +90,6 @@ legend {
   margin:0 auto;
   padding: .3em 2em;
   font-weight: 700;
-  border: 1px solid #fff;
-  background: #F1D16A;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
 }
 
 legend a {
@@ -116,6 +104,7 @@ form label {
   display: block;
   float: left;
   margin: .3em 0 .2em;
+  padding: 0 .5em;
   line-height: 1.5;
   cursor: pointer;
 }
@@ -134,10 +123,6 @@ button {
   cursor: pointer;
 }
 
-form .buttons {
-  padding-left: 30%;
-}
-
 form dl { width:100%; overflow: hidden; }
 form dt, form dd { margin: .5em 0; padding: 0; float: left;  }
 form dt { clear: left; width: 30%;  }
@@ -151,37 +136,26 @@ form.register .buttons {
   padding-left: 0;
 }
 
-form input[type="submit"] {
+form.login input[type="submit"],
+form.register input[type="submit"] {
   margin-left: 30%;
   cursor: pointer;
 }
 
-/* NIXON ENEMIES */
+/* Pictures */
 
-.ranking {
-  overflow: auto;
+#content .photos {
   list-style: none;
-  border: 1px solid #ddd;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
+  margin: 0;
+  padding: 0;
 }
 
-.ranking li {
-  padding: .5em;
-  overflow: visible;
+#content .photos li {
+  margin-bottom: 25px;
 }
 
-.ranking li:nth-child(even) {
-  background: #eee;
-}
-
-.ranking li:hover {
-  background: #FFFFAA;
-}
-
-.ranking li h3 {
-}
-
-.ranking li h3 span {
-  margin-right: .75em;
+#content a img {
+  padding: 15px;
+  border: 1px solid #ccc;
+  -moz-border-radius: 4px;
 }
